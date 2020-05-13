@@ -140,8 +140,8 @@ def test_bake_badge_in_readme_output_if_open_source(cookies):
     ) as result:
         _, slug, _ = project_info(result)
 
-        badge = f"![Python Package](https://github.com/UKHO/{slug}\
-        /workflows/Python%20package/badge.svg)"
+        badge = f"![Python Package](https://github.com/UKHO/{slug}/"
+        "workflows/Python%20package/badge.svg)"
 
         readme_path = result.project.join("README.md")
         with open(str(readme_path)) as readme_file:
@@ -158,8 +158,8 @@ def test_bake_badge_not_in_readme_output_if_open_source(cookies):
     ) as result:
         _, slug, _ = project_info(result)
 
-        badge = f"![Python Package](https://github.com/UKHO/{slug}\
-        /workflows/Python%20package/badge.svg)"
+        badge = f"![Python Package](https://github.com/UKHO/{slug}/"
+        "workflows/Python%20package/badge.svg)"
 
         readme_path = result.project.join("README.md")
         with open(str(readme_path)) as readme_file:
