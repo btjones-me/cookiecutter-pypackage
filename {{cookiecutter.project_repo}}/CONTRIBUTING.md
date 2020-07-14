@@ -54,34 +54,19 @@ Ready to contribute? Here's how to set up `{{ cookiecutter.project_slug }}` for 
     ```
     $ git clone git@github.com:your_name_here/{{ cookiecutter.project_slug }}.git
     ```
-4. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development:
-    ```
-    $ mkvirtualenv {{ cookiecutter.project_slug }}
-    $ cd {{ cookiecutter.project_slug }}/
-    $ python setup.py develop
-    ```
-
+4. Install your local copy into a virtual environment. Refer to the README for instructions on how to do this.
 5. Create a branch for local development:
     ```
     $ git checkout -b name-of-your-bugfix-or-feature
     ```
    Now you can make your changes locally.
 
-6. When you're done making changes, check that your changes pass
-   the checks and tests, including testing other Python versions with
-   tox:
+6. When you're done making changes, check that your changes pass the checks and tests, including testing other Python versions with tox:
     ```shell script
     make lint
     make test
     make test-all # runs tox
     ```
-   To get the required tools for running checks and tests, install them
-   into your virtual environment:
-   ```shell script
-    curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
-    source $HOME/.poetry/env
-    poetry install
-   ```
 
 7. Commit your changes and push your branch to GitHub:
     ```
@@ -96,11 +81,8 @@ Ready to contribute? Here's how to set up `{{ cookiecutter.project_slug }}` for 
 Before you submit a pull request, check that it meets these guidelines:
 
 1. The pull request should include tests.
-2. If the pull request adds functionality, the docs should be updated. Put
-   your new functionality into a function with a docstring, and add the
-   feature to the list in README.md.
-3. The pull request should work for Python 3.5, 3.6, 3.7 and 3.8, and for PyPy. Check
-   and make sure that the tests pass for all supported Python versions.
+2. If the pull request adds functionality, the docs should be updated. Put your new functionality into a function with a docstring, and add the feature to the list in README.md.
+3. The pull request should work for Python 3.5, 3.6, 3.7 and 3.8, and for PyPy. Check and make sure that the tests pass for all supported Python versions.
 
 # Tips
 
@@ -109,14 +91,16 @@ To run a subset of tests:
 $ pytest tests.test_{{ cookiecutter.project_slug }}
 ```
 
+To view test coverage as a html report:
+```shell script
+make coverage
+```
+
 # Deploying
 
-A reminder for the maintainers on how to deploy.
-Make sure all your changes are committed (including an entry in HISTORY.md).
-Then run:
+A reminder for the maintainers on how to deploy. Make sure all your changes are committed and merged into master (including an entry in HISTORY.md). Then create a tag:
+```shell script
+git tag $(poetry version | awk '{print $2}')
+git push $(poetry version | awk '{print $2}')
 ```
-$ bump2version patch # possible: major / minor / patch
-$ git push
-$ git push --tags
-```
-GitHub Actions will then deploy to PyPI if tests pass.
+GitHub Actions will then verify the tag matches the version in the commit, create a GitHub release and finally deploy to PyPI.

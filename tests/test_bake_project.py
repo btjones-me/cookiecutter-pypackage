@@ -212,9 +212,7 @@ def test_using_pytest(cookies):
         lines = test_file_path.readlines()
         assert "import pytest" in "".join(lines)
         # Test the new pytest target
-        assert run_inside_dir("pytest", str(result.project)) == 0
-        # Test the test alias (which invokes pytest)
-        assert run_inside_dir("test", str(result.project)) == 0
+        assert run_inside_dir("pytest tests", str(result.project)) == 0
 
 
 def test_bake_and_run_lints(cookies):
