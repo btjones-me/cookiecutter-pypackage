@@ -76,7 +76,6 @@ def test_bake_with_defaults(cookies):
         assert result.exception is None
 
         found_toplevel_files = [f.basename for f in result.project.listdir()]
-        assert "setup.py" in found_toplevel_files
         assert "python_boilerplate" in found_toplevel_files
         assert "tox.ini" in found_toplevel_files
         assert "tests" in found_toplevel_files
@@ -111,7 +110,7 @@ def test_bake_with_gh_actions(cookies):
             result.project.join(".github/workflows/pythonpackage.yml").open(),
             Loader=yaml.FullLoader,
         )
-        assert "Python package" == result_github_actions_config["name"]
+        assert "Python Package" == result_github_actions_config["name"]
 
 
 def test_bake_without_author_file(cookies):

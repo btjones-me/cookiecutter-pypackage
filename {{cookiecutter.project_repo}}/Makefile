@@ -49,28 +49,28 @@ clean-test: ## remove test and coverage artifacts
 
 lint: checktypes checkstyle sast checklicenses ## run all checks
 
-checktypes: ## check types with mypy
-	mypy --ignore-missing-imports {{ cookiecutter.project_slug }} tests
+checktypes: .venv ## check types with mypy
+	poetry run mypy --ignore-missing-imports {{ cookiecutter.project_slug }} tests
 
-checkstyle: ## check style with flake8, isort and black
+checkstyle: .venv ## check style with flake8, isort and black
 	poetry run flake8 {{ cookiecutter.project_slug }} tests
 	poetry run isort --check-only --recursive {{ cookiecutter.project_slug }} tests
 	poetry run black --check --diff {{ cookiecutter.project_slug }} tests
 
-fixstyle: ## fix black and isort style violations
+fixstyle: .venv ## fix black and isort style violations
 	poetry run isort ---recursive {{ cookiecutter.project_slug }} tests
 	poetry run black {{ cookiecutter.project_slug }} tests
 
-sast: ## run static application security testing
+sast: .venv ## run static application security testing
 	poetry run bandit -r {{ cookiecutter.project_slug }}
 
-checklicenses: ## check dependencies meet license rules
+checklicenses: .venv requirements.txt ## check dependencies meet license rules
 	poetry run liccheck -s liccheck.ini
 
-test: install ## run tests quickly with the default Python
+test: .venv ## run tests quickly with the default Python
 	poetry run pytest --verbose --capture=no
 
-test-all: ## run tests on every Python version with tox
+test-all: .venv ## run tests on every Python version with tox
 	poetry run tox
 
 coverage: ## check code coverage quickly with the default Python
@@ -85,9 +85,15 @@ release: dist ## package and upload a release
 dist: clean ## builds source and wheel package
 	poetry build
 
-install: requirements.txt ## install the package to the active Python's site-packages
-	poetry install
-
 requirements.txt: poetry.lock ## create/update the requirements.txt file using poetry
 	poetry export --format requirements.txt
-	touch requirements.txt # when there are no dependencies
+	@touch requirements.txt # when there are no dependencies
+
+.venv: poetry.lock
+	poetry config virtualenvs.in-project true
+	poetry install
+	@touch -c .venv
+
+poetry.lock: pyproject.toml
+	poetry update
+	@touch -c poetry.lock

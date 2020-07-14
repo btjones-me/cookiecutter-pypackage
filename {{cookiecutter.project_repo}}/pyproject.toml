@@ -1,11 +1,11 @@
 [tool.poetry]
-name = "{{ cookiecutter.project_slug }}"
+name = "{{ cookiecutter.project_repo }}"
 version = "{{ cookiecutter.version }}"
 authors = [
     "UK Hydrographic Office <datascienceandengineering@ukho.gov.uk>"
 ]
-description = "Python wrapper for the C implementation of the Generic Sensor Format library."
-license = "MIT"
+description = "{{ cookiecutter.project_short_description }}"
+license = "{{ cookiecutter.open_source_license }}"
 keywords = [
     "FIXME",
 ]
@@ -21,8 +21,8 @@ classifiers = [
     "Programming Language :: Python :: 3.8"
 ]
 
-homepage = "https://github.com/UKHO/{{ cookiecutter.project_slug }}"
-repository = "https://github.com/UKHO/{{ cookiecutter.project_slug }}"
+homepage = "https://github.com/UKHO/{{ cookiecutter.project_repo }}"
+repository = "https://github.com/UKHO/{{ cookiecutter.project_repo }}"
 
 readme = "README.md"
 

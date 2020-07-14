@@ -27,4 +27,4 @@ fix:
 	isort -rc hooks tests setup.py
 
 test:
-	pytest
+	pytest --verbose --capture=no
