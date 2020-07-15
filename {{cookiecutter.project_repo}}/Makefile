@@ -58,7 +58,7 @@ checkstyle: .venv ## check style with flake8, isort and black
 	poetry run black --check --diff {{ cookiecutter.project_slug }} tests
 
 fixstyle: .venv ## fix black and isort style violations
-	poetry run isort ---recursive {{ cookiecutter.project_slug }} tests
+	poetry run isort {{ cookiecutter.project_slug }} tests
 	poetry run black {{ cookiecutter.project_slug }} tests
 
 sast: .venv ## run static application security testing
