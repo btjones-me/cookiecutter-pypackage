@@ -28,6 +28,7 @@ readme = "README.md"
 
 # Do not manually edit, use poetry add/remove (--dev) to manage dependencies
 [tool.poetry.dependencies]
+mypy = "^0.782"
 python = "^3.6"
 
 [tool.poetry.dev-dependencies]
