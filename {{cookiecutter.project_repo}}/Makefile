@@ -94,6 +94,6 @@ requirements.txt: poetry.lock ## create/update the requirements.txt file using p
 	poetry install
 	@touch -c .venv
 
-poetry.lock: pyproject.toml
-	poetry update
+poetry.lock:
+	poetry update -vvv
 	@touch -c poetry.lock
