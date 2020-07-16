@@ -24,7 +24,7 @@ lint:
 
 fix:
 	black hooks tests setup.py
-	isort -rc hooks tests setup.py
+	isort --profile black hooks tests setup.py
 
 test:
-	pytest
+	pytest --verbose --capture=no
