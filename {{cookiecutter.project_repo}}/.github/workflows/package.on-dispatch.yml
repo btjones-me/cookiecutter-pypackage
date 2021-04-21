@@ -59,7 +59,7 @@ jobs:
     - name: Publish to package repository
       env:
         DOTNET_ROOT: /snap/dotnet-sdk/current
-        POETRY_PYPI_TOKEN_UKHOGET: ${% raw %}{{ {% endraw %}secrets.{{cookiecutter.project_slug}} {% raw %} }} {% endraw %}
+        POETRY_PYPI_TOKEN_UKHOGET: ${% raw %}{{ {% endraw %}secrets.UKHO_{{cookiecutter.project_slug}}_AZDO_UKHOGET_UPLOAD_PAT {% raw %} }} {% endraw %}
       run: |
         make release
 
