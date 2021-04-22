@@ -39,7 +39,7 @@ secondary = true
 # Do not manually edit, use poetry add/remove (--dev) to manage dependencies
 [tool.poetry.dependencies]
 mypy = "^0.782"
-python = "^3.6"
+python = "^3.7"
 
 [tool.poetry.dev-dependencies]
 assertpy = "^1.0"
