@@ -49,7 +49,7 @@ jobs:
 
     - name: Bump version
       run : |
-        poetry version ${% raw %}{{ {% endraw %}github.event.inputs.poetry-version }} {% endraw %}
+        poetry version${% raw %} {{ {% endraw %}github.event.inputs.poetry-version${% raw %} }} {% endraw %}
 
     - name: Create git tag
       run : |
