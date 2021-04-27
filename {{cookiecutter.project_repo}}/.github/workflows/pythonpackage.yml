@@ -44,5 +44,6 @@ jobs:
           poetry config http-basic.ukhoget SVC_github-ci ${% raw %}{{ secrets.UKHO_BOT_UKHOGET_FEED_PAT }}{% endraw %}
           poetry export -f requirements.txt --dev --with-credentials --without-hashes -o requirements.txt
           poetry run pip install -r requirements.txt
+          echo "::warning::Cookiecutter: If there are any extras in Poetry's pyproject.toml (or -E options on the poetry install) these must also be installed here."
           echo "" > requirements.txt  # prevents liccheck falling over
           make test-all
