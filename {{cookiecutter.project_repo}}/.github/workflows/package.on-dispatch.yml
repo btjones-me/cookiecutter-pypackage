@@ -1,21 +1,14 @@
 name: Publish Python from Workflow Dispatch
-# Publishes a Python Package with a specified git tag to Azure DevOps, and creates a release
+# Publishes a Python Package to Azure DevOps, taking the version from pyproject.toml and creates a Git tag and GitHub release
 
 on:
   workflow_dispatch:
-    inputs:
-      poetry-version:
-        description: 'Version to bump. Can be major, minor, patch, prerelease or a valid semver string.'
-        required: true
-        default: 'prerelease'
-      description-body:
-        description: ''
-        required: false
-        default: ''
 
 jobs:
   deploy-tag:
     runs-on: ubuntu-latest
+    # using the below GitHub Environment is required to access the AzDo feed upload PAT
+    # it can only be run from the main branch
     environment: AzDoUKHOGETUpload
 
     steps:
@@ -47,9 +40,9 @@ jobs:
         sudo apt-get install -y --no-install-recommends gdal-bin libgdal-dev python3-gdal
         python -m pip install --upgrade pip poetry
 
-    - name: Bump version
+    - name : Check if tag already exists
       run : |
-        poetry version{% raw %} ${{ github.event.inputs.poetry-version }} {% endraw %}
+        ! git ls-remote --exit-code --tags origin refs/tags/$(poetry version --short) || (echo "::error::Tag already exists on remote"; exit 3)
 
     - name: Create git tag
       run : |
@@ -78,11 +71,3 @@ jobs:
         release_name:{% raw %} ${{ steps.previoustag.outputs.tag }} {% endraw %}
         draft: false
         prerelease: false
-        body:{% raw %} ${{ github.event.inputs.description-body }} {% endraw %}
-
-    - name: Commit and push pyproject.toml version bump
-      uses: EndBug/add-and-commit@v7
-      with:
-        add: 'pyproject.toml'
-        message: 'Committing pyproject.toml version bump to {% raw %} ${{ steps.previoustag.outputs.tag }} {% endraw %}'
-        push: true
