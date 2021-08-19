@@ -31,10 +31,10 @@ name = "pypi_"
 url = "https://pypi.org/simple/"
 default = true
 
-[[tool.poetry.source]]
-name = "pypigetfeed"
-url = "https://pkgs.dev.azure.com/org/_packaging/pypigetfeed/pypi/simple/"
-secondary = true
+#[[tool.poetry.source]]
+#name = "pypigetfeed"
+#url = "https://pkgs.dev.azure.com/org/_packaging/pypigetfeed/pypi/simple/"
+#secondary = true
 
 # Do not manually edit, use poetry add/remove (--dev) to manage dependencies
 [tool.poetry.dependencies]
