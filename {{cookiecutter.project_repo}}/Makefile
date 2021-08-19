@@ -83,13 +83,13 @@ release: dist ## package and upload a release, manage version yourself
 	# poetry version prerelease/patch/minor/major
 	# https://python-poetry.org/docs/cli/#version
 	sed -i 's/simple/upload/g' pyproject.toml
-	poetry publish -r ukhoget
+	poetry publish -r pypigetfeed
 	sed -i 's/upload/simple/g' pyproject.toml
 
 prerelease: dist ## package and upload a release, bump minor version
 	poetry version prerelease
 	sed -i 's/simple/upload/g' pyproject.toml
-	poetry publish -r ukhoget
+	poetry publish -r pypigetfeed
 	sed -i 's/upload/simple/g' pyproject.toml
 
 dist: clean ## builds source and wheel package

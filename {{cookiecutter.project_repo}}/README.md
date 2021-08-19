@@ -16,7 +16,7 @@
 
 # Credits
 
-This package was created with Cookiecutter and the `UKHO/cookiecutter-pypackage` project template.
+This package was created with Cookiecutter and the `btjones-me/cookiecutter-pypackage` project template.
 
 * Cookiecutter: https://github.com/cookiecutter/cookiecutter
-* UKHO/cookiecutter-pypackage: https://github.com/UKHO/cookiecutter-pypackage
+* btjones-me/cookiecutter-pypackage: https://github.com/btjones-me/cookiecutter-pypackage

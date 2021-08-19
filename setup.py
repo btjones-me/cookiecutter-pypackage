@@ -7,10 +7,10 @@ setup(
     packages=[],
     version="0.1.0",
     description="Cookiecutter template for a Python package",
-    author="UK Hydrographic Office",
+    author="btjones-me",
     license="BSD",
-    author_email="datascienceandengineering@ukho.gov.uk",
-    url="https://github.com/UKHO/cookiecutter-pypackage",
+    author_email="",
+    url="https://github.com/btjones-me/cookiecutter-pypackage",
     keywords=["cookiecutter", "template", "package"],
     python_requires=">=3.5",
     classifiers=[

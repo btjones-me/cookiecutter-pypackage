@@ -1,10 +1,10 @@
 # Cookiecutter PyPackage
 
-![Python Package](https://github.com/UKHO/cookiecutter-pypackage/workflows/Python%20package/badge.svg)
+![Python Package](https://github.com/btjones-me/cookiecutter-pypackage/workflows/Python%20package/badge.svg)
 
 Cookiecutter template for a Python package.
 
-* GitHub repo: https://github.com/UKHO/cookiecutter-pypackage/
+* GitHub repo: https://github.com/btjones-me/cookiecutter-pypackage/
 * Free software: BSD license (this needs to be reviewed)
 
 # Features
@@ -26,7 +26,7 @@ pip install -U cookiecutter
 ```
 Generate a Python package project:
 ```
-cookiecutter https://github.com/UKHO/cookiecutter-pypackage.git
+cookiecutter https://github.com/btjones-me/cookiecutter-pypackage.git
 ```
 Then create a repo and put it there.
 

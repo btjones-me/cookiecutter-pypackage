@@ -136,12 +136,12 @@ def test_bake_slug_in_readme_output(cookies):
 def test_bake_badge_in_readme_output_if_open_source(cookies):
     with bake_in_temp_dir(
         cookies,
-        extra_context={"github_username": "UKHO", "open_source_license": "MIT license"},
+        extra_context={"github_username": "btjones-me", "open_source_license": "MIT license"},
     ) as result:
         _, repo, _, _ = project_info(result)
 
         badge = (
-            f"![Python Package](https://github.com/UKHO/{repo}/"
+            f"![Python Package](https://github.com/btjones-me/{repo}/"
             "workflows/Python%20package/badge.svg)"
         )
 
@@ -154,14 +154,14 @@ def test_bake_badge_not_in_readme_output_if_open_source(cookies):
     with bake_in_temp_dir(
         cookies,
         extra_context={
-            "github_username": "UKHO",
+            "github_username": "btjones-me",
             "open_source_license": "Not open source",
         },
     ) as result:
         _, repo, _, _ = project_info(result)
 
         badge = (
-            f"![Python Package](https://github.com/UKHO/{repo}/"
+            f"![Python Package](https://github.com/btjones-me/{repo}/"
             "workflows/Python%20package/badge.svg)"
         )
 
